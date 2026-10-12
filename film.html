@@ -1,4 +1,4 @@
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +19,7 @@
 
         body {
             min-height: 100vh;
+            min-height: 100dvh;
             background-image: url("bck.png");
             background-size: cover;
             background-position: center;
@@ -28,8 +29,10 @@
             overflow-x: hidden;
         }
 
+        /* FILM CONTENT */
         .film {
             min-height: 100vh;
+            min-height: 100dvh;
             width: 100%;
             display: flex;
             justify-content: center;
@@ -52,6 +55,7 @@
         .content h1 {
             text-align: center;
             font-size: clamp(1.8rem, 4vw, 3rem);
+            line-height: 1.2;
             margin-bottom: 12px;
             overflow-wrap: anywhere;
         }
@@ -73,11 +77,15 @@
 
         .film-card {
             min-width: 0;
+            display: flex;
+            flex-direction: column;
             padding: clamp(12px, 2vw, 18px);
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.18);
             border-radius: 18px;
-            transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+            transition: transform 0.3s ease,
+                        background 0.3s ease,
+                        box-shadow 0.3s ease;
         }
 
         .film-card:hover {
@@ -98,6 +106,7 @@
 
         .film-card h2 {
             font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+            line-height: 1.35;
             margin-top: 16px;
             margin-bottom: 8px;
             overflow-wrap: anywhere;
@@ -108,11 +117,13 @@
             font-size: clamp(0.875rem, 1.2vw, 1rem);
             line-height: 1.7;
             margin-bottom: 18px;
+            flex-grow: 1;
         }
 
         .watch-button {
             display: block;
             width: 100%;
+            margin-top: auto;
             padding: 12px;
             text-align: center;
             text-decoration: none;
@@ -123,7 +134,9 @@
             font-weight: bold;
             line-height: 1.4;
             overflow-wrap: anywhere;
-            transition: 0.3s;
+            transition: background 0.3s ease,
+                        transform 0.3s ease,
+                        box-shadow 0.3s ease;
         }
 
         .watch-button:hover {
@@ -132,26 +145,22 @@
             box-shadow: 0 0 15px rgba(0, 217, 255, 0.5);
         }
 
-        /* DESKTOP NAVIGATION */
+        /* NAVIGATION BAR */
         .bottom-nav {
             position: fixed;
-            bottom: 15px;
+            bottom: max(15px, env(safe-area-inset-bottom));
             left: 50%;
             transform: translateX(-50%);
-            width: 95%;
-            max-width: 1000px;
-
+            width: min(95%, 1000px);
             display: flex;
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            gap: 8px;
-            padding: 12px;
-
+            gap: clamp(4px, 1vw, 10px);
+            padding: clamp(8px, 1.5vw, 12px);
             background: rgba(0, 0, 0, 0.78);
             border: 1px solid rgba(255, 255, 255, 0.25);
             border-radius: 20px;
-
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
@@ -159,24 +168,25 @@
         }
 
         .bottom-nav a {
-            display: block;
             flex: 0 1 auto;
             text-align: center;
             text-decoration: none;
             color: white;
-            padding: 12px 18px;
+            padding: clamp(10px, 1.4vw, 13px)
+                     clamp(10px, 1.8vw, 18px);
             border-radius: 12px;
             background: transparent;
-            font-size: 14px;
+            font-size: clamp(12px, 1.3vw, 15px);
             line-height: 1.3;
             white-space: nowrap;
-            transition: background 0.3s ease, color 0.3s ease;
+            transition: background 0.3s ease,
+                        color 0.3s ease;
         }
 
         .bottom-nav a:hover,
         .bottom-nav a:focus-visible {
             background: #00d9ff;
-            color: #111;
+            color: black;
             outline: none;
         }
 
@@ -188,19 +198,13 @@
 
         /* TABLET */
         @media (max-width: 900px) {
-            .bottom-nav {
-                gap: 4px;
-                padding: 10px;
-            }
-
-            .bottom-nav a {
-                padding: 10px 9px;
-                font-size: 12px;
+            .film-container {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
 
         /* MOBILE */
-        @media (max-width: 700px) {
+        @media (max-width: 600px) {
             body {
                 background-attachment: scroll;
             }
@@ -211,88 +215,85 @@
             }
 
             .content {
-                padding: 20px 16px;
+                padding: clamp(18px, 5vw, 28px) 14px;
+            }
+
+            .content h1 {
+                font-size: clamp(28px, 7vw, 38px);
+            }
+
+            .content > p {
+                font-size: clamp(15px, 4vw, 17px);
+                margin-bottom: 25px;
             }
 
             .film-container {
                 grid-template-columns: 1fr;
-                gap: 18px;
+                gap: 16px;
             }
 
             .film-card {
-                padding: 12px;
+                padding: clamp(12px, 4vw, 18px);
             }
 
-            /* SAME MOBILE NAVIGATION STYLE AS PRODUCTS */
+            .film-card h2 {
+                font-size: clamp(19px, 5vw, 23px);
+            }
+
+            .film-card p {
+                font-size: clamp(14px, 3.8vw, 16px);
+            }
+
+            .watch-button {
+                font-size: 15px;
+            }
+
+            /* MATCHING MOBILE NAVIGATION */
             .bottom-nav {
-                position: fixed;
-                bottom: 10px;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 98%;
-                max-width: 500px;
-
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                align-items: center;
-
-                column-gap: 3px;
-                row-gap: 18px;
-                padding: 14px 5px 16px;
-
-                background: rgba(0, 0, 0, 0.82);
-                border: 1px solid rgba(255, 255, 255, 0.2);
-                border-radius: 25px;
-
-                backdrop-filter: blur(15px);
-                -webkit-backdrop-filter: blur(15px);
-                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-                z-index: 1000;
+                width: 96%;
+                bottom: max(8px, env(safe-area-inset-bottom));
+                padding: 8px;
+                gap: 5px;
+                border-radius: 16px;
             }
 
             .bottom-nav a {
-                flex: 0 0 auto;
-                padding: 8px 7px;
-                font-size: 14px;
-                line-height: 1.4;
-                white-space: nowrap;
-                text-align: center;
-                border-radius: 8px;
+                flex: 1 1 auto;
+                padding: 10px 8px;
+                font-size: clamp(12px, 3.2vw, 14px);
+                border-radius: 9px;
             }
 
             .bottom-nav .logout {
-                flex: 0 0 100%;
-                width: 100%;
-                margin: 0;
-                padding: 8px 5px;
-                font-size: 14px;
-                line-height: 1.4;
+                flex-basis: 100%;
                 text-align: center;
             }
         }
 
         /* SMALL MOBILE */
         @media (max-width: 360px) {
+            .film {
+                padding-left: 8px;
+                padding-right: 8px;
+                padding-bottom: 170px;
+            }
+
+            .content {
+                padding: 18px 10px;
+            }
+
             .bottom-nav {
-                bottom: 8px;
-                column-gap: 1px;
-                row-gap: 14px;
-                padding: 12px 3px 14px;
+                gap: 4px;
+                padding: 6px;
             }
 
             .bottom-nav a {
-                padding: 7px 4px;
+                padding: 9px 6px;
                 font-size: 12px;
             }
 
             .bottom-nav .logout {
                 flex-basis: 100%;
-                font-size: 13px;
-            }
-
-            .content {
-                padding: 16px;
             }
 
             .film-card {
@@ -300,6 +301,7 @@
             }
         }
 
+        /* MOBILE LANDSCAPE */
         @media (max-height: 500px) and (orientation: landscape) {
             .film {
                 padding-top: 25px;
@@ -311,6 +313,7 @@
             }
         }
 
+        /* REDUCED MOTION */
         @media (prefers-reduced-motion: reduce) {
             html {
                 scroll-behavior: auto;
@@ -336,8 +339,8 @@
         <a href="index.html" class="logout">Logout</a>
     </nav>
 
-    <section class="film">
-        <div class="content">
+    <main class="film">
+        <section class="content">
 
             <h1>MIJAZ Apparel</h1>
 
@@ -349,7 +352,7 @@
 
             <div class="film-container">
 
-                <div class="film-card">
+                <article class="film-card">
                     <video controls preload="metadata" playsinline>
                         <source src="film1.mp4" type="video/mp4">
                         Your browser does not support HTML video.
@@ -365,9 +368,9 @@
                     <a href="film1.mp4" class="watch-button">
                         Watch T-Shirt Film
                     </a>
-                </div>
+                </article>
 
-                <div class="film-card">
+                <article class="film-card">
                     <video controls preload="metadata" playsinline>
                         <source src="film2.mp4" type="video/mp4">
                         Your browser does not support HTML video.
@@ -383,9 +386,9 @@
                     <a href="film2.mp4" class="watch-button">
                         Watch Hoodie Film
                     </a>
-                </div>
+                </article>
 
-                <div class="film-card">
+                <article class="film-card">
                     <video controls preload="metadata" playsinline>
                         <source src="film3.mp4" type="video/mp4">
                         Your browser does not support HTML video.
@@ -401,9 +404,9 @@
                     <a href="film3.mp4" class="watch-button">
                         Watch Shorts Film
                     </a>
-                </div>
+                </article>
 
-                <div class="film-card">
+                <article class="film-card">
                     <video controls preload="metadata" playsinline>
                         <source src="film4.mp4" type="video/mp4">
                         Your browser does not support HTML video.
@@ -419,11 +422,11 @@
                     <a href="film4.mp4" class="watch-button">
                         Watch Pants Film
                     </a>
-                </div>
+                </article>
 
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
 </body>
 </html>
