@@ -1,9 +1,11 @@
-<html>
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Home</title>
+    <meta name="theme-color" content="#171717">
+    <title>MIJAZZ APPAREL | Home</title>
 
     <style>
         * {
@@ -13,106 +15,475 @@
             font-family: Arial, Helvetica, sans-serif;
         }
 
+        :root {
+            --blue: #0fdbff;
+            --blue-hover: #72eaff;
+            --white: #ffffff;
+            --muted: #d0d5dc;
+            --glass: rgba(255, 255, 255, 0.12);
+            --border: rgba(255, 255, 255, 0.25);
+        }
+
         html {
-            font-size: 16px;
             scroll-behavior: smooth;
+            scroll-padding-top: 25px;
         }
 
         body {
             min-height: 100vh;
             min-height: 100dvh;
-            background-image: url("bck.png");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-color: #101522;
-            background-attachment: fixed;
-            color: white;
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.48),
+                    rgba(0, 0, 0, 0.62)
+                ),
+                url("bck1.png") center / cover fixed no-repeat;
+            background-color: #171717;
+            color: var(--white);
         }
 
-        .home {
-            min-height: 100vh;
-            min-height: 100dvh;
+        a {
+            color: inherit;
+        }
+
+        .hero {
+            min-height: 90vh;
+            min-height: 90dvh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 65px 20px 75px;
+        }
+
+        .hero-content {
+            width: 100%;
+            max-width: 1050px;
+            text-align: center;
+            padding: clamp(28px, 6vw, 65px);
+            background: rgba(255, 255, 255, 0.13);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.30);
+        }
+
+        .brand-label {
+            display: inline-block;
+            margin-bottom: 22px;
+            padding: 9px 17px;
+            border: 1px solid rgba(15, 219, 255, 0.55);
+            border-radius: 30px;
+            color: var(--blue);
+            background: rgba(15, 219, 255, 0.09);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 3px;
+        }
+
+        .hero h1 {
+            font-size: clamp(35px, 6vw, 70px);
+            line-height: 1.12;
+            margin-bottom: 23px;
+            overflow-wrap: anywhere;
+        }
+
+        .hero h1 span {
+            display: block;
+            color: var(--blue);
+            margin-top: 8px;
+        }
+
+        .hero-description {
+            max-width: 760px;
+            margin: 0 auto;
+            color: #f1f5f9;
+            font-size: clamp(15px, 2vw, 19px);
+            line-height: 1.9;
+        }
+
+        .hero-buttons {
             display: flex;
             justify-content: center;
+            flex-wrap: wrap;
+            gap: 13px;
+            margin-top: 30px;
+        }
+
+        .button {
+            display: inline-flex;
+            justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: clamp(20px, 5vw, 50px);
-            padding-bottom: clamp(120px, 16vh, 160px);
+            min-height: 48px;
+            padding: 14px 24px;
+            border-radius: 11px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 800;
+            transition: 0.25s ease;
         }
 
-        .content {
-            width: 100%;
-            max-width: 850px;
-            padding: clamp(25px, 5vw, 55px);
-            background: rgba(255, 255, 255, 0.10);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: clamp(16px, 3vw, 25px);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        .button-primary {
+            background: var(--blue);
+            color: #071217;
+            border: 1px solid var(--blue);
         }
 
-        .content h1 {
-            font-size: clamp(30px, 5vw, 55px);
-            line-height: 1.2;
-            margin-bottom: clamp(15px, 3vw, 25px);
-            overflow-wrap: break-word;
+        .button-primary:hover {
+            background: var(--blue-hover);
+            transform: translateY(-2px);
         }
 
-        .content h1 span {
-            color: #00d9ff;
-        }
-
-        .content p {
-            font-size: clamp(15px, 1.8vw, 19px);
-            line-height: 1.8;
+        .button-secondary {
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            background: rgba(255, 255, 255, 0.08);
             color: white;
-            margin-bottom: 0;
-            overflow-wrap: break-word;
+        }
+
+        .button-secondary:hover {
+            border-color: var(--blue);
+            color: var(--blue);
+            transform: translateY(-2px);
+        }
+
+        .section {
+            width: min(1180px, 92%);
+            margin: 0 auto;
+            padding: 55px 0;
+        }
+
+        .section-heading {
+            max-width: 780px;
+            margin: 0 auto 35px;
+            text-align: center;
+        }
+
+        .section-heading .eyebrow,
+        .about-panel .eyebrow {
+            color: var(--blue);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .section-heading h2 {
+            margin: 12px 0 15px;
+            font-size: clamp(27px, 4vw, 42px);
+            line-height: 1.2;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 23px;
+        }
+
+        .feature-card {
+            min-width: 0;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(13px);
+            -webkit-backdrop-filter: blur(13px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.20);
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(15, 219, 255, 0.75);
+        }
+
+        .feature-image {
+            position: relative;
+            height: 235px;
+            overflow: hidden;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(15, 219, 255, 0.13),
+                    rgba(0, 0, 0, 0.60)
+                ),
+                #252a30;
+        }
+
+        .feature-image img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover .feature-image img {
+            transform: scale(1.05);
+        }
+
+        .image-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            background: linear-gradient(
+                135deg,
+                rgba(15, 219, 255, 0.12),
+                rgba(0, 0, 0, 0.55)
+            );
+        }
+
+        .image-placeholder .symbol {
+            font-size: 47px;
+            margin-bottom: 12px;
+        }
+
+        .image-placeholder strong {
+            font-size: 17px;
+            color: white;
+        }
+
+        .image-placeholder small {
+            margin-top: 8px;
+            color: #d7e0e7;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .feature-image img:not([src=""]) + .image-placeholder {
+            display: none;
+        }
+
+        .feature-body {
+            padding: 25px;
+        }
+
+        .feature-number {
+            color: var(--blue);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .feature-body h3 {
+            margin: 12px 0;
+            font-size: 22px;
+            line-height: 1.3;
+        }
+
+        .feature-body p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.85;
+        }
+
+        .feature-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--blue);
+            font-size: 14px;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .feature-link:hover {
+            color: white;
+        }
+
+        .about-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 35px;
+            padding: clamp(25px, 5vw, 48px);
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        .about-panel h2 {
+            margin: 13px 0 18px;
+            font-size: clamp(27px, 4vw, 39px);
+            line-height: 1.25;
+        }
+
+        .about-panel h2 span {
+            color: var(--blue);
+        }
+
+        .about-panel > div:first-child > p {
+            color: #e0e5eb;
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        .about-list {
+            display: grid;
+            gap: 14px;
+        }
+
+        .about-item {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            padding: 18px;
+            border-radius: 14px;
+            background: rgba(0, 0, 0, 0.22);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .about-item .check {
+            color: var(--blue);
+            font-size: 21px;
+            font-weight: 900;
+        }
+
+        .about-item h3 {
+            margin-bottom: 6px;
+            font-size: 16px;
+        }
+
+        .about-item p {
+            color: #e0e5eb;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .highlight {
+            text-align: center;
+            padding: 25px 15px;
+            background: rgba(255, 255, 255, 0.10);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .highlight .icon {
+            display: block;
+            margin-bottom: 13px;
+            font-size: 29px;
+        }
+
+        .highlight h3 {
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .highlight p {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        /* WHITE FROSTED-GLASS CTA */
+        .cta {
+            position: relative;
+            overflow: hidden;
+            padding: clamp(30px, 5vw, 55px);
+            text-align: center;
+
+            background: rgba(255, 255, 255, 0.22);
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            border-radius: 24px;
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.18),
+                inset 0 1px 1px rgba(255, 255, 255, 0.35);
+        }
+
+        .cta h2 {
+            margin-bottom: 16px;
+            font-size: clamp(27px, 4vw, 40px);
+            line-height: 1.3;
+            color: #ffffff;
+        }
+
+        .cta h2 span {
+            color: var(--blue);
+        }
+
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #ffffff;
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        .cta .button {
+            margin-top: 24px;
+        }
+
+        .site-footer {
+            padding: 30px 20px 115px;
+            text-align: center;
+            color: #c8cdd3;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .site-footer strong {
+            color: var(--blue);
         }
 
         .bottom-nav {
             position: fixed;
-            bottom: max(15px, env(safe-area-inset-bottom));
             left: 50%;
+            bottom: max(15px, env(safe-area-inset-bottom));
             transform: translateX(-50%);
+            z-index: 1000;
             width: min(95%, 1000px);
             display: flex;
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            gap: clamp(4px, 1vw, 10px);
-            padding: clamp(8px, 1.5vw, 12px);
-            background: rgba(0, 0, 0, 0.75);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 20px;
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-            z-index: 1000;
+            gap: 6px;
+            padding: 10px;
+            background: rgba(15, 15, 15, 0.90);
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            border-radius: 18px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.40);
         }
 
         .bottom-nav a {
             flex: 0 1 auto;
+            padding: 12px 16px;
             text-align: center;
             text-decoration: none;
             color: white;
-            padding: clamp(10px, 1.4vw, 13px)
-                     clamp(10px, 1.8vw, 18px);
-            border-radius: 12px;
-            background: transparent;
-            font-size: clamp(12px, 1.3vw, 15px);
+            border-radius: 10px;
+            font-size: 13px;
             line-height: 1.3;
             white-space: nowrap;
-            transition: background 0.3s ease,
-                        color 0.3s ease;
+            transition: background 0.25s ease, color 0.25s ease;
         }
 
         .bottom-nav a:hover,
         .bottom-nav a:focus-visible {
-            background: #00d9ff;
-            color: black;
+            background: var(--blue);
+            color: #061217;
             outline: none;
         }
 
@@ -122,79 +493,124 @@
             color: white;
         }
 
+        @media (max-width: 850px) {
+            .feature-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .about-panel {
+                grid-template-columns: 1fr;
+            }
+
+            .highlight-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
         @media (max-width: 600px) {
-            .home {
-                padding: 18px;
-                padding-bottom: 155px;
+            body {
+                background-attachment: scroll;
             }
 
-            .content {
-                padding: clamp(24px, 6vw, 35px) clamp(18px, 5vw, 25px);
+            .hero {
+                min-height: auto;
+                padding: 45px 15px 35px;
             }
 
-            .content h1 {
-                font-size: clamp(28px, 7vw, 38px);
+            .hero-content {
+                padding: 30px 20px;
+                border-radius: 20px;
             }
 
-            .content p {
-                font-size: clamp(15px, 4vw, 17px);
-                line-height: 1.7;
+            .hero h1 {
+                font-size: clamp(32px, 9vw, 43px);
+            }
+
+            .hero-description {
+                font-size: 14px;
+                line-height: 1.8;
+            }
+
+            .brand-label {
+                font-size: 10px;
+                letter-spacing: 2px;
+            }
+
+            .section {
+                width: 92%;
+                padding: 35px 0;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .feature-image {
+                height: 220px;
+            }
+
+            .feature-body {
+                padding: 22px;
+            }
+
+            .about-panel {
+                padding: 24px 18px;
+                gap: 25px;
+            }
+
+            .highlight-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 10px;
+            }
+
+            .highlight {
+                padding: 20px 10px;
             }
 
             .bottom-nav {
                 width: 96%;
                 bottom: max(8px, env(safe-area-inset-bottom));
-                padding: 8px;
-                gap: 5px;
-                border-radius: 16px;
+                gap: 4px;
+                padding: 7px;
+                border-radius: 15px;
             }
 
             .bottom-nav a {
-                flex: 1 1 auto;
-                padding: 10px 8px;
-                font-size: clamp(12px, 3.2vw, 14px);
-                border-radius: 9px;
+                flex: 1 1 27%;
+                padding: 10px 5px;
+                font-size: 12px;
+                white-space: normal;
+            }
+
+            .site-footer {
+                padding-bottom: 150px;
             }
         }
 
-        @media (max-width: 360px) {
-            .bottom-nav {
-                gap: 4px;
-                padding: 6px;
-            }
-
+        @media (max-width: 350px) {
             .bottom-nav a {
-                padding: 9px 6px;
-                font-size: 12px;
+                font-size: 11px;
+                padding: 9px 3px;
             }
 
-            .home {
-                padding-bottom: 170px;
+            .highlight-grid {
+                grid-template-columns: 1fr;
             }
         }
 
         @media (max-height: 500px) and (orientation: landscape) {
-            .home {
-                min-height: 100vh;
-                padding-top: 25px;
-                padding-bottom: 100px;
-            }
-
-            .content {
-                padding: 25px;
-            }
-
-            .content h1 {
-                font-size: clamp(27px, 5vh, 40px);
-            }
-
-            .content p {
-                font-size: clamp(14px, 2.5vh, 17px);
+            .hero {
+                min-height: auto;
+                padding: 30px 15px;
             }
 
             .bottom-nav {
-                position: fixed;
-                bottom: 8px;
+                bottom: 6px;
+            }
+
+            .site-footer {
+                padding-bottom: 100px;
             }
         }
 
@@ -211,30 +627,311 @@
         }
     </style>
 </head>
-<nav class="bottom-nav" aria-label="Main navigation">
-        <a href="home.html">Home</a>
+
+<body>
+
+    <nav class="bottom-nav" aria-label="Main navigation">
+        <a href="home.html" aria-current="page">Home</a>
         <a href="about.html">About</a>
         <a href="product.html">Product</a>
         <a href="contact.html">Contact</a>
         <a href="film.html">Film Viewing</a>
         <a href="index.html" class="logout">Logout</a>
     </nav>
-<body>
 
-    <main class="home">
-        <section class="content">
-            <h1>
-                Welcome to <span>My Website</span>
-            </h1>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <span class="brand-label">STYLE • COMFORT • CONFIDENCE</span>
 
-            <p>
-                Welcome to our website! Explore our products,
-                learn more about us, contact us, and enjoy our
-                available films. Everything you need is organized
-                in one simple and easy-to-use website.
-            </p>
+                <h1>
+                    Welcome to
+                    <span>MIJAZZ APPAREL STORE</span>
+                </h1>
+
+                <p class="hero-description">
+                    Discover your style with MIJAZZ APPAREL, a clothing
+                    destination designed for people who want to express
+                    their personality through fashion. Explore everyday
+                    essentials, casual streetwear, comfortable clothing,
+                    and fresh outfit ideas in one convenient place.
+                    Whether you prefer a clean minimalist look or a bold
+                    streetwear style, find inspiration for your next outfit.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="product.html" class="button button-primary">
+                        EXPLORE OUR PRODUCTS
+                    </a>
+
+                    <a href="about.html" class="button button-secondary">
+                        LEARN ABOUT US
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="collections">
+            <div class="section-heading">
+                <span class="eyebrow">Explore MIJAZZ</span>
+                <h2>Discover Our Fashion World</h2>
+                <p>
+                    Explore our store through three featured areas:
+                    the studio, our clothing collections, and the creative
+                    process behind apparel design. Each section represents
+                    a different part of the MIJAZZ APPAREL experience.
+                </p>
+            </div>
+
+            <div class="feature-grid">
+
+                <article class="feature-card">
+                    <div class="feature-image">
+                        <img
+                            src="bck.png"
+                            alt="MIJAZZ clothing photography studio"
+                            onerror="this.style.display='none'"
+                        >
+
+                        <div class="image-placeholder">
+                            <span class="symbol">📸</span>
+                            <strong>THE CLOTHING STUDIO</strong>
+                            <small>Add your studio picture as studio.jpg</small>
+                        </div>
+                    </div>
+
+                    <div class="feature-body">
+                        <span class="feature-number">01 / OUR STUDIO</span>
+                        <h3>Inside the Fashion Studio</h3>
+                        <p>
+                            Discover the creative environment behind our
+                            apparel presentation. A studio helps showcase
+                            clothing details, colors, textures, and outfit
+                            combinations through clean and attractive
+                            product photography.
+                        </p>
+
+                        <a href="about.html" class="feature-link">
+                            Discover Our Story →
+                        </a>
+                    </div>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-image">
+                        <img
+                            src="product5.jpg"
+                            alt="MIJAZZ streetwear clothing collection"
+                            onerror="this.style.display='none'"
+                        >
+
+                        <div class="image-placeholder">
+                            <span class="symbol">👕</span>
+                            <strong>OUR CLOTHING COLLECTION</strong>
+                            <small>Add your clothing picture as clothing.jpg</small>
+                        </div>
+                    </div>
+
+                    <div class="feature-body">
+                        <span class="feature-number">02 / OUR COLLECTION</span>
+                        <h3>Find Your Everyday Style</h3>
+                        <p>
+                            Browse clothing styles such as T-shirts,
+                            hoodies, shorts, pants, and other casual
+                            essentials. Explore outfit combinations
+                            suited to everyday activities, relaxed
+                            occasions, and streetwear-inspired looks.
+                        </p>
+
+                        <a href="product.html" class="feature-link">
+                            Browse Products →
+                        </a>
+                    </div>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-image">
+                        <img
+                            src="product10.jpg"
+                            alt="Apparel design and customization workspace"
+                            onerror="this.style.display='none'"
+                        >
+
+                        <div class="image-placeholder">
+                            <span class="symbol">✏️</span>
+                            <strong>DESIGN & CREATIVITY</strong>
+                            <small>Add your design picture as design.jpg</small>
+                        </div>
+                    </div>
+
+                    <div class="feature-body">
+                        <span class="feature-number">03 / CREATIVITY</span>
+                        <h3>Where Style Meets Creativity</h3>
+                        <p>
+                            Discover the ideas behind apparel design,
+                            from choosing color combinations to exploring
+                            graphics, patterns, and coordinated outfits.
+                            Clothing can be more than an outfit—it can
+                            be a way to express who you are.
+                        </p>
+
+                        <a href="product.html" class="feature-link">
+                            Explore the Collection →
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="section" id="about-store">
+            <div class="about-panel">
+                <div>
+                    <span class="eyebrow">About Our Store</span>
+
+                    <h2>
+                        Wear Bold.<br>
+                        <span>Wear MIJAZZ.</span>
+                    </h2>
+
+                    <p>
+                        MIJAZZ APPAREL is a clothing store website created
+                        to make exploring fashion simple, convenient,
+                        and enjoyable. Our goal is to present apparel
+                        in an organized way so visitors can discover
+                        different styles, compare available products,
+                        and learn more about the store.
+                    </p>
+
+                    <p style="margin-top: 14px;">
+                        From casual essentials to streetwear-inspired
+                        outfits, our store celebrates individuality,
+                        comfort, and confidence. We believe your style
+                        should reflect your personality and help you
+                        feel confident in what you wear.
+                    </p>
+
+                    <a
+                        href="about.html"
+                        class="button button-primary"
+                        style="margin-top: 23px;"
+                    >
+                        MORE ABOUT MIJAZZ
+                    </a>
+                </div>
+
+                <div class="about-list">
+                    <div class="about-item">
+                        <span class="check">✓</span>
+                        <div>
+                            <h3>Style for Everyday Life</h3>
+                            <p>
+                                Discover casual outfit ideas and versatile
+                                clothing styles for different occasions.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="about-item">
+                        <span class="check">✓</span>
+                        <div>
+                            <h3>Organized Product Browsing</h3>
+                            <p>
+                                Explore our product page to view available
+                                clothing categories and product details.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="about-item">
+                        <span class="check">✓</span>
+                        <div>
+                            <h3>A Modern Shopping Experience</h3>
+                            <p>
+                                Browse a clean, responsive website built
+                                for desktop computers, tablets, and phones.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="about-item">
+                        <span class="check">✓</span>
+                        <div>
+                            <h3>Fashion and Self-Expression</h3>
+                            <p>
+                                Find inspiration to combine colors,
+                                clothing pieces, and personal style.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="highlights">
+            <div class="section-heading">
+                <span class="eyebrow">Why Explore MIJAZZ?</span>
+                <h2>Everything in One Place</h2>
+                <p>
+                    Navigate our website to discover the store,
+                    explore apparel, get in touch, and enjoy the
+                    other features available on the site.
+                </p>
+            </div>
+
+            <div class="highlight-grid">
+                <article class="highlight">
+                    <span class="icon">👕</span>
+                    <h3>Apparel Collection</h3>
+                    <p>Explore clothing categories and product information.</p>
+                </article>
+
+                <article class="highlight">
+                    <span class="icon">🎨</span>
+                    <h3>Style Inspiration</h3>
+                    <p>Discover outfit ideas, colors, and fashion combinations.</p>
+                </article>
+
+                <article class="highlight">
+                    <span class="icon">📱</span>
+                    <h3>Responsive Design</h3>
+                    <p>Enjoy a layout that adapts to different screen sizes.</p>
+                </article>
+
+                <article class="highlight">
+                    <span class="icon">💬</span>
+                    <h3>Contact the Store</h3>
+                    <p>Visit our contact page for store-related inquiries.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="cta">
+                <h2>
+                    Your Style. Your Choice.<br>
+                    <span>Your MIJAZZ.</span>
+                </h2>
+
+                <p>
+                    Ready to discover your next look? Explore our apparel
+                    collection, learn more about the store, and find
+                    clothing inspiration that matches your personal style.
+                    Start your MIJAZZ APPAREL experience today.
+                </p>
+
+                <a href="product.html" class="button button-primary">
+                    START EXPLORING
+                </a>
+            </div>
         </section>
     </main>
+
+    <footer class="site-footer">
+        <p><strong>MIJAZZ APPAREL</strong> — Wear Bold. Wear MIJAZZ.</p>
+        <p>Explore fashion, express your style, and wear your confidence.</p>
+        <p>&copy; 2026 MIJAZZ APPAREL. All rights reserved.</p>
+    </footer>
 
 </body>
 </html>
