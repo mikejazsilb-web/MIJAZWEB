@@ -358,9 +358,92 @@
                 transition: none !important;
             }
         }
+
+        .brand-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            margin: 0 auto 30px;
+            text-align: left;
+        }
+
+        .brand-logo {
+            width: 85px;
+            height: 85px;
+            flex: 0 0 auto;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 25px rgba(0, 217, 255, 0.2);
+        }
+
+        .brand-name {
+            font-size: clamp(25px, 4vw, 42px);
+            font-weight: 900;
+            letter-spacing: 3px;
+            line-height: 1.15;
+            overflow-wrap: anywhere;
+        }
+
+        .brand-tagline {
+            color: #00d9ff;
+            font-size: 13px;
+            letter-spacing: 4px;
+            margin-top: 8px;
+            font-weight: bold;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 700px) {
+            .brand-header {
+                gap: 12px;
+                margin-bottom: 25px;
+            }
+
+            .brand-logo {
+                width: 65px;
+                height: 65px;
+            }
+
+            .brand-name {
+                font-size: clamp(22px, 5.5vw, 32px);
+                letter-spacing: 1px;
+            }
+
+            .brand-tagline {
+                font-size: 10px;
+                letter-spacing: 2px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .brand-header {
+                gap: 9px;
+            }
+
+            .brand-logo {
+                width: 55px;
+                height: 55px;
+            }
+
+            .brand-name {
+                font-size: 21px;
+                letter-spacing: 0.5px;
+            }
+
+            .brand-tagline {
+                font-size: 9px;
+                letter-spacing: 1px;
+            }
+        }
     </style>
 </head>
-<nav class="bottom-nav" aria-label="Main navigation">
+
+
+
+<body>  <nav class="bottom-nav" aria-label="Main navigation">
         <a href="home.html">Home</a>
         <a href="about.html">About</a>
         <a href="product.html">Product</a>
@@ -369,14 +452,19 @@
         <a href="index.html" class="logout">Logout</a>
     </nav>
 
-
-<body>
-
     
 
     <main class="contact">
 
-        <section class="content">
+        <section class="content">    <header class="brand-header">
+                <img src="logo.png" alt="MIJAZZ APPAREL logo" class="brand-logo">
+                <div class="brand-text">
+                    <div class="brand-name">MIJAZZ APPAREL</div>
+                    <div class="brand-tagline">WEAR BOLD. WEAR MIJAZZ.</div>
+                </div>
+            </header>
+
+
 
             <h1>Contact Us</h1>
 
